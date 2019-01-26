@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> 
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!-- Orange -->
+<div class="container">
+<div class="row d-flex flex-row mt-5" >
+<div class="progress"style="width:90%">
+        <div id="progress" class="progress-bar bg-warning" style="width:40%"></div>
+        <audio id="audio" src="/assets/musics/Linkinpark.mp3"  style="width:100%">In The End</audio>
+     </div>
+     <i  id="playPause" class="fa fa-play-circle pl-2 " ></i>
+    
+     <i class="fa fa-step-forward pl-2"></i>
+     <i class="fa fa-stop-circle pl-2"></i>
+     <div>
+        
+
+    
+    </div>
+   </div>
+   </div> 
+</body>
+<script>
+var audio=document.getElementById('audio');
+var playPause=document.getElementById("playPause");
+playPause.addEventListener("click",function()
+{
+    if(audio.paused)
+    {
+        audio.play();
+        playPause.classList.remove("fa-play-circle");
+        playPause.classList.add("fa-pause-circle");
+
+
+    }else
+    {
+        audio.pause();
+        playPause.classList.remove("fa-pause-circle");
+        playPause.classList.add("fa-play-circle");
+    }
+    
+});
+
+</script>
+</html>
