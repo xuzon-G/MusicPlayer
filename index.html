@@ -24,14 +24,21 @@
 <!-- Orange -->
 <div class="container">
 <div class="row d-flex flex-row mt-5" >
-<div class="progress"style="width:90%">
-        <div id="progress" class="progress-bar bg-warning" style="width:40%"></div>
-        <audio id="audio" src="/assets/musics/Linkinpark.mp3"  style="width:100%">In The End</audio>
-     </div>
-     <i  id="playPause" class="fa fa-play-circle pl-2 " ></i>
+<div class="progress mt-1"style="width:90%" >
+        
+        <div id="progress" class="progress-bar bg-warning" style=""  ></div><span>In the End</span>
+        <audio id="audio"  src="/assets/musics/Linkinpark.mp3"  style="width:100%"></audio>
+    </div>
+         <div>
+     <i  id="playPause" class="fa fa-play-circle pl-2 pb-2" ></i>
     
      <i class="fa fa-step-forward pl-2"></i>
-     <i class="fa fa-stop-circle pl-2"></i>
+     <i id="stop" class="fa fa-stop-circle pl-2"></i>
+     <i id="volume" class="fa fa-volume-up pl-2"></i>
+  
+    </div>
+     
+   
      <div>
         
 
@@ -41,25 +48,61 @@
    </div> 
 </body>
 <script>
-var audio=document.getElementById('audio');
-var playPause=document.getElementById("playPause");
-playPause.addEventListener("click",function()
+var audio=document.getElementById("audio");
+var bar=document.getElementById('progress');
+var play_Pause=document.getElementById("playPause");
+var stopBtn=document.getElementById("stop");
+var volumeBtn=document.getElementById("volume");
+
+// Listeners
+play_Pause.addEventListener("click",playPause);
+stopBtn.addEventListener("click",stop);
+volumeBtn.addEventListener("click",volume);
+
+
+// Functions
+function playPause()
 {
     if(audio.paused)
     {
         audio.play();
-        playPause.classList.remove("fa-play-circle");
-        playPause.classList.add("fa-pause-circle");
+        play_Pause.classList.remove("fa-play-circle");
+        play_Pause.classList.add("fa-pause-circle");
 
 
     }else
     {
         audio.pause();
-        playPause.classList.remove("fa-pause-circle");
-        playPause.classList.add("fa-play-circle");
+        play_Pause.classList.remove("fa-pause-circle");
+        play_Pause.classList.add("fa-play-circle");
     }
     
-});
+}
+
+// /////////////////////////////////////////////////
+function stop()
+{
+  audio.pause();
+  audio.currentTime=0;
+  play_Pause.classList.remove("fa-pause-circle");
+        play_Pause.classList.add("fa-play-circle");
+
+}
+
+function volume()
+{
+    if(audio.muted)
+    {
+        audio.muted=false;
+        volumeBtn.classList.remove("fa-volume-off");
+        volumeBtn.classList.add("fa-volume-up");
+    }else
+    {
+        audio.muted=true;
+        volumeBtn.classList.remove("fa-volume-up");
+        volumeBtn.classList.add("fa-volume-off");
+    }
+}
 
 </script>
 </html>
