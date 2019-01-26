@@ -24,17 +24,19 @@
 <!-- Orange -->
 <div class="container">
 <div class="row d-flex flex-row mt-5" >
-<div class="progress mt-1"style="width:90%" >
+<div id="slider" class=" mt-1"style="width:70%" >
         
-        <div id="progress" class="progress-bar bg-warning" style=""  ></div><span>In the End</span>
+        <input type="range" class="custom-range" id="seekSlider" min="0" max="100"step="1" value="0">  
         <audio id="audio"  src="/assets/musics/Linkinpark.mp3"  style="width:100%"></audio>
     </div>
-         <div>
+         <div style="width:30%">
      <i  id="playPause" class="fa fa-play-circle pl-2 pb-2" ></i>
     
-     <i class="fa fa-step-forward pl-2"></i>
-     <i id="stop" class="fa fa-stop-circle pl-2"></i>
-     <i id="volume" class="fa fa-volume-up pl-2"></i>
+     <i class="fa fa-step-forward "></i>
+     <i id="stop" class="fa fa-stop-circle "></i>
+     <i id="volume" class="fa fa-volume-up "></i>
+     
+     <input style="width:50px" type="range" class="custom-range pt-2 pl-2" id="volumeSlider" min="0" value="50">
   
     </div>
      
@@ -47,62 +49,8 @@
    </div>
    </div> 
 </body>
-<script>
-var audio=document.getElementById("audio");
-var bar=document.getElementById('progress');
-var play_Pause=document.getElementById("playPause");
-var stopBtn=document.getElementById("stop");
-var volumeBtn=document.getElementById("volume");
+<script src="/assets/js/audioPlayer.js">
 
-// Listeners
-play_Pause.addEventListener("click",playPause);
-stopBtn.addEventListener("click",stop);
-volumeBtn.addEventListener("click",volume);
-
-
-// Functions
-function playPause()
-{
-    if(audio.paused)
-    {
-        audio.play();
-        play_Pause.classList.remove("fa-play-circle");
-        play_Pause.classList.add("fa-pause-circle");
-
-
-    }else
-    {
-        audio.pause();
-        play_Pause.classList.remove("fa-pause-circle");
-        play_Pause.classList.add("fa-play-circle");
-    }
-    
-}
-
-// /////////////////////////////////////////////////
-function stop()
-{
-  audio.pause();
-  audio.currentTime=0;
-  play_Pause.classList.remove("fa-pause-circle");
-        play_Pause.classList.add("fa-play-circle");
-
-}
-
-function volume()
-{
-    if(audio.muted)
-    {
-        audio.muted=false;
-        volumeBtn.classList.remove("fa-volume-off");
-        volumeBtn.classList.add("fa-volume-up");
-    }else
-    {
-        audio.muted=true;
-        volumeBtn.classList.remove("fa-volume-up");
-        volumeBtn.classList.add("fa-volume-off");
-    }
-}
 
 </script>
 </html>
